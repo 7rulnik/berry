@@ -50,8 +50,8 @@ export default class PatchCommitCommand extends BaseCommand {
       cwd: this.context.cwd,
     });
 
-    stdout = stdout.replace(new RegExp(miscUtils.escapeRegExp(originalPathN), `g`), ``);
-    stdout = stdout.replace(new RegExp(miscUtils.escapeRegExp(patchedPathN), `g`), ``);
+    stdout = stdout.replace(new RegExp(miscUtils.escapeRegExp(`${originalPathN}/`), `g`), ``);
+    stdout = stdout.replace(new RegExp(miscUtils.escapeRegExp(`${patchedPathN}/`), `g`), ``);
 
     this.context.stdout.write(stdout);
   }
