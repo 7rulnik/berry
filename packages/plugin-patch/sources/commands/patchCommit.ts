@@ -43,8 +43,8 @@ export default class PatchCommitCommand extends BaseCommand {
 
     const originalPath = await patchUtils.extractPackageToDisk(locator, {cache, project});
 
-    const originalPathN = npath.fromPortablePath(originalPath);
-    const patchedPathN = npath.fromPortablePath(folderPath);
+    const originalPathN = npath.fromPortablePath(originalPath).replace(/\\/g, `/`);
+    const patchedPathN = npath.fromPortablePath(folderPath).replace(/\\/g, `/`);
 
     let {stdout} = await execUtils.execvp(`git`, [`diff`, `--no-index`, originalPathN, patchedPathN], {
       cwd: this.context.cwd,
