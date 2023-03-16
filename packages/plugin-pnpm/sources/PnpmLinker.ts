@@ -142,11 +142,7 @@ class PnpmInstaller implements Installer {
       await xfs.copyPromise(packageLocation, fetchResult.prefixPath, {
         baseFs: fetchResult.packageFs,
         overwrite: false,
-        linkStrategy: {
-          type: `HardlinkFromIndex`,
-          indexPath: await this.indexFolderPromise,
-          autoRepair: true,
-        },
+        linkStrategy: null,
       });
     }));
 
